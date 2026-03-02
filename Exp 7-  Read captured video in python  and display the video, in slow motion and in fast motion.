@@ -1,0 +1,30 @@
+import cv2
+import time
+video_path = r"C:\Users\Papireddy\OneDrive\certificates\ITA0527\WhatsApp Video 2026-03-02 at 14.55.05.mp4"
+cap_normal = cv2.VideoCapture(video_path)
+cap_slow = cv2.VideoCapture(video_path)
+cap_fast = cv2.VideoCapture(video_path)
+
+if not cap_normal.isOpened():
+    print("Error: Cannot open video file")
+else:
+    while True:
+        ret1, frame1 = cap_normal.read()
+        ret2, frame2 = cap_slow.read()
+        ret3, frame3 = cap_fast.read()
+
+        if not ret1 or not ret2 or not ret3:
+            break
+        cv2.imshow("Normal Speed", frame1)
+        cv2.imshow("Slow Motion", frame2)
+        cv2.imshow("Fast Motion", frame3)
+        cv2.waitKey(30)
+        time.sleep(0.1)
+        cap_fast.read()
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+    cap_normal.release()
+    cap_slow.release()
+    cap_fast.release()
+    cv2.destroyAllWindows()
