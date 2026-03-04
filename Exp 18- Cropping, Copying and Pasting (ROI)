@@ -1,0 +1,13 @@
+import cv2
+image = cv2.imread(r"C:\Users\Papireddy\OneDrive\certificates\ITA0527\Screenshot 2026-02-27 151152.png")
+h, w, c = image.shape
+roi = image[50:200, 50:200]
+roi_h, roi_w, _ = roi.shape
+start_y = h - roi_h - 10
+start_x = w - roi_w - 10
+
+image[start_y:start_y+roi_h, start_x:start_x+roi_w] = roi
+
+cv2.imshow("ROI Copy Paste", image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
