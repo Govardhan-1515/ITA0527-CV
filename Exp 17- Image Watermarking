@@ -1,0 +1,13 @@
+import cv2
+
+image = cv2.imread(r"C:\Users\Papireddy\OneDrive\certificates\ITA0527\Screenshot 2026-02-27 151152.png")
+
+# Add Text Watermark
+watermarked = image.copy()
+cv2.putText(watermarked, "WATERMARK", (50, 50),
+            cv2.FONT_HERSHEY_SIMPLEX, 1,
+            (0, 0, 255), 2)
+
+cv2.imshow("Watermarked Image", watermarked)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
