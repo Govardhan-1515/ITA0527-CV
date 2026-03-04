@@ -1,0 +1,16 @@
+import cv2
+import numpy as np
+
+image = cv2.imread(r"C:\Users\Papireddy\OneDrive\certificates\ITA0527\Screenshot 2026-02-27 151152.png")
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+# Sobel X and Y
+sobelx = cv2.Sobel(gray, cv2.CV_64F, 1, 0, ksize=3)
+sobely = cv2.Sobel(gray, cv2.CV_64F, 0, 1, ksize=3)
+
+# Combine
+sobel = cv2.magnitude(sobelx, sobely)
+
+cv2.imshow("Sobel Edge", sobel)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
