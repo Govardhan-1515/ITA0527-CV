@@ -1,0 +1,12 @@
+import cv2
+import numpy as np
+
+image = cv2.imread(r"C:\Users\Papireddy\OneDrive\certificates\ITA0527\Screenshot 2026-02-27 151152.png", 0)
+
+kernel = np.ones((5,5), np.uint8)
+
+tophat = cv2.morphologyEx(image, cv2.MORPH_TOPHAT, kernel)
+
+cv2.imshow("Top Hat", tophat)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
