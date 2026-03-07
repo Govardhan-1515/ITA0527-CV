@@ -1,0 +1,17 @@
+import cv2
+
+cap = cv2.VideoCapture(r"C:\Users\Papireddy\OneDrive\certificates\ITA0527\WhatsApp Video 2026-03-02 at 14.55.05.mp4")
+frames = []
+
+while True:
+    ret, f = cap.read()
+    if not ret:
+        break
+    frames.append(f)
+
+for f in frames[::-1]:
+    cv2.imshow("Reverse Video", f)
+    if cv2.waitKey(30)==27:
+        break
+
+cv2.destroyAllWindows()
